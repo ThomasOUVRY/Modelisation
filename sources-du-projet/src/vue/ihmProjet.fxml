@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.VueSimple">
+  <children>
+    <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Fichier">
+          <items>
+            <MenuItem fx:id="menuItemOuvrir" mnemonicParsing="false" text="Ouvrir" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="menuItemQuitter" mnemonicParsing="false" text="Quitter" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Aide">
+          <items>
+        	<MenuItem fx:id="menuAide" mnemonicParsing="false" text="Aide" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="800.0" prefWidth="1201.0" style="-fx-border-color: black; -fx-border-width: 1;">
+               <children>
+                  <Canvas fx:id="canvas" height="800.0" width="1200.0" />
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0">
+               <HBox.margin>
+                  <Insets left="15.0" right="15.0" />
+               </HBox.margin>
+            </Separator>
+        <AnchorPane fx:id="anchorPaneOption" prefHeight="574.0" prefWidth="210.0">
+          <children>
+            <Label alignment="CENTER" layoutX="50.0" layoutY="5.0" prefHeight="25.0" prefWidth="120.0" style="&#10;" text="Zoom" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="hboxZoom" layoutX="50.0" layoutY="40.0" prefHeight="25.0" prefWidth="120.0">
+                     <children>
+                        <Button fx:id="zoomIn" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="+" />
+                        <Button fx:id="zoomOut" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="-">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" layoutX="110.0" layoutY="75.0" opacity="0.6" startX="-100.0" strokeLineCap="ROUND" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="80.0" prefHeight="25.0" prefWidth="120.0" text="Translation">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="vboxTranslation" layoutX="50.0" layoutY="115.0" prefHeight="52.0" prefWidth="124.0">
+                     <children>
+                        <HBox prefHeight="25.0" prefWidth="120.0">
+                           <children>
+                              <Button fx:id="translateUp" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↑">
+                                 <HBox.margin>
+                                    <Insets left="42.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="120.0">
+                           <children>
+                              <Button fx:id="translateLeft" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="←">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="translateDown" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↓">
+                                 <HBox.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="translateRight" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="→" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Line endX="100.0" layoutX="110.0" layoutY="185.0" opacity="0.6" startX="-100.0" strokeLineCap="ROUND" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="190.0" prefHeight="25.0" prefWidth="120.0" text="Rotation" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="hboxRotation" layoutX="20.0" layoutY="225.0" prefHeight="80.0" prefWidth="180.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="40.0" text="X">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="rotationXLeft" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↰">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="rotationXRight" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↱">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="40.0" text="Y">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="rotationYLeft" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↰">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="rotationYRight" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↱">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="40.0" text="Z">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Button fx:id="rotationZLeft" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↰">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="rotationZRight" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="↱">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" layoutX="110.0" opacity="0.6" startX="-100.0" strokeLineCap="ROUND" />
+                  <Line endX="100.0" layoutX="110.0" layoutY="320.0" opacity="0.6" startX="-100.0" strokeLineCap="ROUND" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="323.0" prefHeight="25.0" prefWidth="120.0" text="Affichage" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="24.0" layoutY="358.0" prefHeight="104.0" prefWidth="164.0">
+                     <children>
+                        <HBox prefHeight="32.0" prefWidth="100.0">
+                           <children>
+                              <CheckBox fx:id="checkboxPoints" mnemonicParsing="false" text="Points" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="32.0" prefWidth="100.0">
+                           <children>
+                              <CheckBox fx:id="checkboxSegments" mnemonicParsing="false" text="Segments" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="32.0" prefWidth="100.0">
+                           <children>
+                              <CheckBox fx:id="checkboxFaces" mnemonicParsing="false" text="Faces" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Line endX="100.0" layoutX="110.0" layoutY="462.0" startX="-100.0" />
+                  <HBox fx:id="hboxRotationAuto" layoutX="156.0" layoutY="480.0" prefHeight="25.0" prefWidth="24.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="lancerAvance" layoutX="5.0" layoutY="772.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="201.0" text="Ouvrir le mode avancé" />
+          </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+        </AnchorPane>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+  </children>
+</VBox>
