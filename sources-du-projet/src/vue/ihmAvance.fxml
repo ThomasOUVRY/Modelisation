@@ -144,77 +144,22 @@
             </HBox>
             <Line endX="100.0" layoutX="110.0" opacity="0.6" startX="-100.0" strokeLineCap="ROUND" />
             <Line endX="100.0" layoutX="110.0" layoutY="320.0" opacity="0.6" startX="-100.0" strokeLineCap="ROUND" />
-            <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" layoutX="52.0" layoutY="323.0" prefHeight="25.0" prefWidth="120.0" text="Affichage" textAlignment="CENTER" />
-            <VBox layoutX="25.0" layoutY="355.0" prefHeight="80.0" prefWidth="164.0">
+            <Label alignment="CENTER" font="$x1" layoutX="6.0" layoutY="323.0" prefHeight="25.0" prefWidth="212.0" style="&#10;" text="Rotation automatique" textAlignment="CENTER" />
+            <HBox layoutX="19.0" layoutY="355.0" prefHeight="34.0" prefWidth="180.0">
               <children>
-                <HBox prefHeight="24.0" prefWidth="164.0">
+                <VBox alignment="CENTER" prefHeight="34.0" prefWidth="180.0">
                   <children>
-                    <CheckBox fx:id="checkboxPoints" mnemonicParsing="false" text="Points" />
-                  </children>
-                </HBox>
-                <HBox prefHeight="24.0" prefWidth="164.0">
-                  <children>
-                    <CheckBox fx:id="checkboxSegments" mnemonicParsing="false" text="Segments" />
-                  </children>
-                </HBox>
-                <HBox prefHeight="26.0" prefWidth="164.0">
-                  <children>
-                    <CheckBox fx:id="checkboxFaces" mnemonicParsing="false" text="Faces" />
-                  </children>
-                </HBox>
-              </children>
-            </VBox>
-            <Line endX="100.0" layoutX="111.0" layoutY="439.0" startX="-100.0" />
-            <Label alignment="CENTER" font="$x1" layoutX="6.0" layoutY="440.0" prefHeight="25.0" prefWidth="212.0" style="&#10;" text="Rotation automatique" textAlignment="CENTER" />
-            <HBox layoutX="19.0" layoutY="472.0" prefHeight="34.0" prefWidth="180.0">
-              <children>
-                <VBox prefHeight="60.0" prefWidth="21.0">
-                  <children>
-                    <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" />
-                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="16.0" text="X" textAlignment="CENTER" />
-                  </children>
-                </VBox>
-                <VBox prefHeight="60.0" prefWidth="0.0">
-                  <children>
-                    <CheckBox mnemonicParsing="false" />
-                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="16.0" text="Y" textAlignment="CENTER" />
+                    <CheckBox fx:id="checkboxRotaAutoY" mnemonicParsing="false" />
                   </children>
                   <padding>
                     <Insets left="63.0" right="63.0" />
                   </padding>
                 </VBox>
-                <VBox prefHeight="60.0" prefWidth="0.0">
-                  <children>
-                    <CheckBox mnemonicParsing="false" />
-                    <Label alignment="CENTER" prefHeight="17.0" prefWidth="16.0" text="Z" />
-                  </children>
-                </VBox>
               </children>
             </HBox>
-            <Line endX="100.0" layoutX="110.0" layoutY="520.0" startX="-100.0" />
-            <Label alignment="CENTER" font="$x1" layoutX="5.0" layoutY="528.0" prefHeight="25.0" prefWidth="212.0" style="&#10;" text="Secondaire" textAlignment="CENTER" />
-            <VBox layoutX="25.0" layoutY="555.0" prefHeight="80.0" prefWidth="180.0">
-              <children>
-                <HBox prefHeight="24.0" prefWidth="164.0">
-                  <children>
-                    <CheckBox fx:id="checkboxEclairage" mnemonicParsing="false" text="Eclairage" />
-                  </children>
-                </HBox>
-                <HBox prefHeight="24.0" prefWidth="164.0">
-                  <children>
-                    <CheckBox fx:id="checkboxLissage" mnemonicParsing="false" text="Lissage" />
-                  </children>
-                </HBox>
-                <HBox prefHeight="26.0" prefWidth="164.0">
-                  <children>
-                    <CheckBox fx:id="checkboxOmbrage" mnemonicParsing="false" text="Ombrage" />
-                  </children>
-                </HBox>
-              </children>
-            </VBox>
-            <Line endX="100.0" layoutX="110.0" layoutY="635.0" startX="-100.0" />
-            <Button fx:id="centrerButton" layoutX="12.0" layoutY="646.0" mnemonicParsing="false" prefWidth="201.0" text="Centrer le modèle" />
-            <Button id="centrerButton" fx:id="updateButton" layoutX="11.0" layoutY="674.0" mnemonicParsing="false" prefWidth="201.0" text="Mettre à jour le modèle" />
+            <Line endX="100.0" layoutX="114.0" layoutY="393.0" startX="-100.0" />
+            <Button fx:id="centrerButton" layoutX="13.0" layoutY="403.0" mnemonicParsing="false" prefWidth="201.0" text="Centrer le modèle" />
+            <Button id="centrerButton" fx:id="updateButton" layoutX="12.0" layoutY="431.0" mnemonicParsing="false" prefWidth="201.0" text="Mettre à jour le modèle" />
           </children>
           <HBox.margin>
             <Insets />

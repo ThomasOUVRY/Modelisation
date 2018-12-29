@@ -29,6 +29,7 @@ public class ControllerZoom extends ControllerSimple implements EventHandler<Act
 				modele.zoom(0.9);
 			}
 		}
+		vueFXML.getCanvas().requestFocus();
 	}
 
 	/**

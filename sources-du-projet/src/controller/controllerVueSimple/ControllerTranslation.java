@@ -35,7 +35,7 @@ public class ControllerTranslation extends ControllerSimple implements EventHand
 			else if (event.getSource() == vueFXML.getTranslateUp())
 				modele.translation(0, -10, 0);
 		}
-
+		vueFXML.getCanvas().requestFocus();
 	}
 
 }

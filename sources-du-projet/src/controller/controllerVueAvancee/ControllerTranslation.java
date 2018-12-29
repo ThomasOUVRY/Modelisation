@@ -36,7 +36,7 @@ public class ControllerTranslation extends ControllerAvancee implements EventHan
 			else if (event.getSource() == vueAvancee.getTranslateUp())
 				modele.translation(0, -10, 0);
 		}
-
+		vueAvancee.getCanvas().requestFocus();
 	}
 
 }

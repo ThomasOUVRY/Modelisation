@@ -23,7 +23,6 @@ public class ControllerZoom extends ControllerAvancee implements EventHandler<Ac
 	 */
 	@Override
 	public void handle(ActionEvent event) {
-		System.out.println("zoom");
 		if (modele.getFichier() != null) {
 			if (event.getSource() == vueAvancee.getZoomIn()) {
 				modele.zoom(1.1);
@@ -31,6 +30,7 @@ public class ControllerZoom extends ControllerAvancee implements EventHandler<Ac
 				modele.zoom(0.9);
 			}
 		}
+		vueAvancee.getCanvas().requestFocus();
 	}
 
 	/**

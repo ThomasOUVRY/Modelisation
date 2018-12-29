@@ -13,7 +13,7 @@ import vue.VueSimple;
 /**
  * Mouvement auto
  * 
- * @author Groupe N3
+ * @author ouvryt
  *
  */
 public class MouvementAuto extends ControllerAvancee implements EventHandler<ActionEvent> {
@@ -23,11 +23,12 @@ public class MouvementAuto extends ControllerAvancee implements EventHandler<Act
 
 	/**
 	 * Controleur pour permettre le mouvement auto de la figure, constructeur
+	 * 
 	 * @param model Model, le modèle courant contenant les données
 	 */
 	public MouvementAuto(VueAvancee vueAvancee, Modele3D modele) {
 		super(vueAvancee, modele);
-		
+
 		this.tm = new Timeline();
 		this.played = false;
 		tm.setCycleCount(Integer.MAX_VALUE);
@@ -38,11 +39,9 @@ public class MouvementAuto extends ControllerAvancee implements EventHandler<Act
 
 			@Override
 			public void handle(ActionEvent event) {
-				modele.rotationCentre(0.05, vueAvancee.getCanvas().getWidth()/2, vueAvancee.getCanvas().getHeight()/2, 'y');
-				modele.rotationCentre(0.05, vueAvancee.getCanvas().getWidth()/2, vueAvancee.getCanvas().getHeight()/2, 'z');
-				modele.rotationCentre(0.05, vueAvancee.getCanvas().getWidth()/2, vueAvancee.getCanvas().getHeight()/2, 'x');
+				modele.rotationCentre(0.05, vueAvancee.getCanvas().getWidth() / 2,
+						vueAvancee.getCanvas().getHeight() / 2, 'y');
 			}
-		
 		}));
 	}
 

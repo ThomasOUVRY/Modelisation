@@ -53,6 +53,7 @@ public class ControllerRotation extends ControllerAvancee implements EventHandle
 				modele.rotationCentre(-0.1, xCentre, yCentre, 'z');
 			}
 		}
+		vueAvancee.getCanvas().requestFocus();
 	}
 
 }

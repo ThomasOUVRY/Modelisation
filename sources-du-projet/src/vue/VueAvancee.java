@@ -12,6 +12,7 @@ import controller.controllerVueAvancee.ControllerRotation;
 import controller.controllerVueAvancee.ControllerTranslation;
 import controller.controllerVueAvancee.ControllerZoom;
 import controller.controllerVueAvancee.ControllerZoomScroll;
+import controller.controllerVueAvancee.MouvementAuto;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -118,6 +119,10 @@ public class VueAvancee extends Application implements Observer {
 
 	@FXML
 	private Button updateButton;
+
+	@FXML
+	private CheckBox checkboxRotaAutoY;
+	private boolean rotaAutoYSelected;
 
 	private Modele3D modele;
 
@@ -231,6 +236,7 @@ public class VueAvancee extends Application implements Observer {
 			initTranslateMouse();
 			initZoomMouse();
 			initKeyboard();
+			initRotaAutoCheckboxes();
 		});
 	}
 
@@ -244,7 +250,6 @@ public class VueAvancee extends Application implements Observer {
 		});
 	}
 
-	
 	private void initMouseTracking() {
 		canvas.setOnMouseMoved(e -> {
 			posXMouse = e.getX();
@@ -259,6 +264,15 @@ public class VueAvancee extends Application implements Observer {
 		rotationYRight.setOnAction((ControllerRotation) controles.fabrique("rotation", this, modele));
 		rotationZLeft.setOnAction((ControllerRotation) controles.fabrique("rotation", this, modele));
 		rotationZRight.setOnAction((ControllerRotation) controles.fabrique("rotation", this, modele));
+	}
+
+	private void initRotaAutoCheckboxes() {
+		MouvementAuto mouvementAuto = (MouvementAuto) controles.fabrique("auto", this, modele);
+		checkboxRotaAutoY.setOnMouseClicked(e -> {
+			rotaAutoYSelected = checkboxRotaAutoY.isSelected();
+			canvas.requestFocus();
+			mouvementAuto.handle(null);
+		});
 	}
 
 	private void initTranslateButton() {
@@ -302,4 +316,7 @@ public class VueAvancee extends Application implements Observer {
 		}
 	}
 
+	public boolean isRotaAutoYSelected() {
+		return rotaAutoYSelected;
+	}
 }

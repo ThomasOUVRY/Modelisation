@@ -52,6 +52,7 @@ public class ControllerRotation extends ControllerSimple implements EventHandler
 				modele.rotationCentre(-0.1, xCentre, yCentre, 'z');
 			}
 		}
+		vueFXML.getCanvas().requestFocus();
 	}
 
 }
