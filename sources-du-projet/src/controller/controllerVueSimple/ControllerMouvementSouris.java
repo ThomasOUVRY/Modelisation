@@ -1,5 +1,4 @@
-package controller;
-
+package controller.controllerVueSimple;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -12,7 +11,7 @@ import vue.VueSimple;
  * @author thoma
  *
  */
-public class ControllerMouvementSouris extends Controller implements EventHandler<MouseEvent> {
+public class ControllerMouvementSouris extends ControllerSimple implements EventHandler<MouseEvent> {
 
 	private double anciennePosXMouse;
 	private double anciennePosYMouse;
@@ -49,7 +48,7 @@ public class ControllerMouvementSouris extends Controller implements EventHandle
 			}
 			setAnciennePosMouse(e.getX(), e.getY());
 		}
-
+		vueFXML.getCanvas().requestFocus();
 	}
 
 	/**

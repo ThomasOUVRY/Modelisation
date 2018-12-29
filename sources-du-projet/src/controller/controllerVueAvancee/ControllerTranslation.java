@@ -1,23 +1,24 @@
-package controller;
+package controller.controllerVueAvancee;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modele.structure.Modele3D;
+import vue.VueAvancee;
 import vue.VueSimple;
 /**
  * Controller de la translation avec les boutons
  * @author thoma
  *
  */
-public class ControllerTranslation extends Controller implements EventHandler<ActionEvent> {
+public class ControllerTranslation extends ControllerAvancee implements EventHandler<ActionEvent> {
 
 	/**
 	 * Constructeur
-	 * @param vueFXML
+	 * @param vueAvancee
 	 * @param modele
 	 */
-	public ControllerTranslation(VueSimple vueFXML, Modele3D modele) {
-		super(vueFXML, modele);
+	public ControllerTranslation(VueAvancee vueAvancee, Modele3D modele) {
+		super(vueAvancee, modele);
 	}
 
 	/**
@@ -26,13 +27,13 @@ public class ControllerTranslation extends Controller implements EventHandler<Ac
 	@Override
 	public void handle(ActionEvent event) {
 		if (modele.getFichier() != null) {
-			if (event.getSource() == vueFXML.getTranslateLeft())
+			if (event.getSource() == vueAvancee.getTranslateLeft())
 				modele.translation(-10, 0, 0);
-			else if (event.getSource() == vueFXML.getTranslateRight())
+			else if (event.getSource() == vueAvancee.getTranslateRight())
 				modele.translation(10, 0, 0);
-			else if (event.getSource() == vueFXML.getTranslateDown())
+			else if (event.getSource() == vueAvancee.getTranslateDown())
 				modele.translation(0, 10, 0);
-			else if (event.getSource() == vueFXML.getTranslateUp())
+			else if (event.getSource() == vueAvancee.getTranslateUp())
 				modele.translation(0, -10, 0);
 		}
 

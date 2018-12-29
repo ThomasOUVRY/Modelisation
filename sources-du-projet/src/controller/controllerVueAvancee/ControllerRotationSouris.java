@@ -1,8 +1,9 @@
-package controller;
+package controller.controllerVueAvancee;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import modele.structure.Modele3D;
+import vue.VueAvancee;
 import vue.VueSimple;
 
 /**
@@ -11,7 +12,7 @@ import vue.VueSimple;
  * @author thoma
  *
  */
-public class ControllerRotationSouris extends Controller implements EventHandler<MouseEvent> {
+public class ControllerRotationSouris extends ControllerAvancee implements EventHandler<MouseEvent> {
 
 	private double anciennePosXMouse = -1;
 	private double anciennePosYMouse = -1;
@@ -19,11 +20,11 @@ public class ControllerRotationSouris extends Controller implements EventHandler
 	/**
 	 * Constructeur
 	 * 
-	 * @param vueFXML
+	 * @param vueAvancee
 	 * @param modele
 	 */
-	public ControllerRotationSouris(VueSimple vueFXML, Modele3D modele) {
-		super(vueFXML, modele);
+	public ControllerRotationSouris(VueAvancee vueAvancee, Modele3D modele) {
+		super(vueAvancee, modele);
 	}
 
 	/**
@@ -34,14 +35,14 @@ public class ControllerRotationSouris extends Controller implements EventHandler
 	public void handle(MouseEvent event) {
 		if (modele.getFichier() != null) {
 			if (anciennePosXMouse == -1 && anciennePosYMouse == -1) {
-				anciennePosXMouse = vueFXML.getPosXMouse();
-				anciennePosYMouse = vueFXML.getPosYMouse();
+				anciennePosXMouse = vueAvancee.getPosXMouse();
+				anciennePosYMouse = vueAvancee.getPosYMouse();
 			}
 			double deplacementX = event.getX() - anciennePosXMouse;
 			double deplacementY = event.getY() - anciennePosYMouse;
-			modele.rotationCentre(deplacementX, vueFXML.getCanvas().getWidth() / 2, vueFXML.getCanvas().getHeight() / 2,
+			modele.rotationCentre(deplacementX, vueAvancee.getCanvas().getWidth() / 2, vueAvancee.getCanvas().getHeight() / 2,
 					'y');
-			modele.rotationCentre(deplacementY, vueFXML.getCanvas().getWidth() / 2, vueFXML.getCanvas().getHeight() / 2,
+			modele.rotationCentre(deplacementY, vueAvancee.getCanvas().getWidth() / 2, vueAvancee.getCanvas().getHeight() / 2,
 					'x');
 			setAnciennePosMouse(event.getX(), event.getY());
 		}

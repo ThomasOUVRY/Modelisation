@@ -1,5 +1,4 @@
-package controller;
-
+package controller.controllerVueSimple;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -12,7 +11,7 @@ import vue.VueSimple;
  * @author thoma
  *
  */
-public class ControllerKeyboard extends Controller implements EventHandler<KeyEvent> {
+public class ControllerKeyboard extends ControllerSimple implements EventHandler<KeyEvent> {
 
 	/**
 	 * Constructeur de la classe

@@ -1,20 +1,21 @@
-package controller;
+package controller.controllerVueAvancee;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import modele.structure.Modele3D;
+import vue.VueAvancee;
 import vue.VueSimple;
 /**
  * Controller du zoom, au bouton
  * @author thoma
  *
  */
-public class ControllerZoom extends Controller implements EventHandler<ActionEvent> {
+public class ControllerZoom extends ControllerAvancee implements EventHandler<ActionEvent> {
 
-	public ControllerZoom(VueSimple vueFXML, Modele3D modele) {
-		super(vueFXML, modele);
+	public ControllerZoom(VueAvancee vueAvancee, Modele3D modele) {
+		super(vueAvancee, modele);
 	}
 	
 	/**
@@ -22,10 +23,11 @@ public class ControllerZoom extends Controller implements EventHandler<ActionEve
 	 */
 	@Override
 	public void handle(ActionEvent event) {
+		System.out.println("zoom");
 		if (modele.getFichier() != null) {
-			if (event.getSource() == vueFXML.getZoomIn()) {
+			if (event.getSource() == vueAvancee.getZoomIn()) {
 				modele.zoom(1.1);
-			} else if (event.getSource() == vueFXML.getZoomOut()) {
+			} else if (event.getSource() == vueAvancee.getZoomOut()) {
 				modele.zoom(0.9);
 			}
 		}
@@ -38,10 +40,10 @@ public class ControllerZoom extends Controller implements EventHandler<ActionEve
 		double X = modele.recherchePlusGrandX();
 		double Y = modele.recherchePlusGrandY();
 		if (X > Y) {
-			double a = (vueFXML.getCanvas().getWidth() / (3 * X));
+			double a = (vueAvancee.getCanvas().getWidth() / (3 * X));
 			modele.zoom(a);
 		} else {
-			double a = (vueFXML.getCanvas().getHeight() / (3 * Y));
+			double a = (vueAvancee.getCanvas().getHeight() / (3 * Y));
 			modele.zoom(a);
 		}
 	}

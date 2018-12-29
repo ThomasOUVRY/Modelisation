@@ -1,4 +1,4 @@
-package controller;
+package controller.controllerVueSimple;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;
@@ -11,7 +11,7 @@ import vue.VueSimple;
  * @author thoma
  *
  */
-public class ControllerZoomScroll extends Controller implements EventHandler<ScrollEvent> {
+public class ControllerZoomScroll extends ControllerSimple implements EventHandler<ScrollEvent> {
 
 	public ControllerZoomScroll(VueSimple vueFXML, Modele3D modele) {
 		super(vueFXML, modele);

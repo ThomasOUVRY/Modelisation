@@ -1,6 +1,7 @@
-package controller;
+package controller.controllerVueAvancee;
 
 import modele.structure.Modele3D;
+import vue.VueAvancee;
 import vue.VueSimple;
 
 /*
@@ -8,9 +9,9 @@ import vue.VueSimple;
  *
  * @author poteaua
  */
-public class Controller {
+public class ControllerAvancee {
 
-    protected VueSimple vueFXML;
+    protected VueAvancee vueAvancee;
     protected Modele3D modele;
 
     /**
@@ -19,8 +20,8 @@ public class Controller {
      * @param vueFXML
      * @param modele
      */
-    public Controller(VueSimple vueFXML, Modele3D modele) {
-        this.vueFXML = vueFXML;
+    public ControllerAvancee(VueAvancee vueAvancee, Modele3D modele) {
+        this.vueAvancee = vueAvancee;
         this.modele = modele;
     }
 }

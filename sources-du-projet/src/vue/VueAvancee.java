@@ -1,13 +1,17 @@
 package vue;
 
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
-import controller.ControllerMouvementSouris;
-import controller.ControllerRotation;
-import controller.ControllerTranslation;
-import controller.ControllerZoom;
-import controller.ControllerZoomScroll;
+import controller.controllerVueAvancee.ControllerFactory;
+import controller.controllerVueAvancee.ControllerKeyboard;
+import controller.controllerVueAvancee.ControllerMouvementSouris;
+import controller.controllerVueAvancee.ControllerRotation;
+import controller.controllerVueAvancee.ControllerTranslation;
+import controller.controllerVueAvancee.ControllerZoom;
+import controller.controllerVueAvancee.ControllerZoomScroll;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +24,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -110,7 +115,7 @@ public class VueAvancee extends Application implements Observer {
 
 	@FXML
 	private Button centrerButton;
-	
+
 	@FXML
 	private Button updateButton;
 
@@ -124,16 +129,14 @@ public class VueAvancee extends Application implements Observer {
 
 	private double posYMouse;
 
-	private ControllerFactory controles;
+	private Set<KeyCode> keyPressed;
 
-	public void update(Observable arg0, Object arg1) {
-		System.out.println("update " + idxUpdate++);
-		try {
-			graphicsContext.clearRect(0, 0, 2000, 2000);
-			dessinerModele(false, false, true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private ControllerFactory controles = ControllerFactory.getInstance;
+
+	public void changerModele() {
+		modele = VueSimple.getModele();
+		modele.addObserver(this);
+		update(modele, modele);
 	}
 
 	public void dessinerModele(boolean affichagePoints, boolean affichageSegments, boolean affichageFaces)
@@ -150,35 +153,97 @@ public class VueAvancee extends Application implements Observer {
 		}
 	}
 
+	public Canvas getCanvas() {
+		return canvas;
+	}
+
+	public Set<KeyCode> getKeyPressed() {
+		return keyPressed;
+	}
+
+	public double getPosXMouse() {
+		return posXMouse;
+	}
+
+	public double getPosYMouse() {
+		return posYMouse;
+	}
+
+	public Button getRotationXLeft() {
+		return rotationXLeft;
+	}
+
+	public Button getRotationXRight() {
+		return rotationXRight;
+	}
+
+	public Button getRotationYLeft() {
+		return rotationYLeft;
+	}
+
+	public Button getRotationYRight() {
+		return rotationYRight;
+	}
+
+	public Button getRotationZLeft() {
+		return rotationZLeft;
+	}
+
+	public Button getRotationZRight() {
+		return rotationZRight;
+	}
+
+	public Button getTranslateDown() {
+		return translateDown;
+	}
+
+	public Button getTranslateLeft() {
+		return translateLeft;
+	}
+
+	public Button getTranslateRight() {
+		return translateRight;
+	}
+
+	public Button getTranslateUp() {
+		return translateUp;
+	}
+
+	public Button getZoomIn() {
+		return zoomIn;
+	}
+
+	public Button getZoomOut() {
+		return zoomOut;
+	}
+
 	public void initialize() throws Exception {
 		graphicsContext = canvas.getGraphicsContext2D();
-		System.out.println("init\n" + graphicsContext);
+		keyPressed = new HashSet<>();
 		modele = VueSimple.getModele();
 		modele.addObserver(this);
-		zoomIn.setOnMouseClicked(e -> {
-			graphicsContext.strokeLine(0, 10, 205, 2035);
-		});
 		updateButton.setOnMouseClicked(e -> {
 			changerModele();
+			initZoomButton();
+			initTranslateButton();
+			initRotationButton();
+			initMouseTracking();
+			initTranslateMouse();
+			initZoomMouse();
+			initKeyboard();
 		});
 	}
 
-	@Override
-	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(this.getClass().getResource("ihmAvance.fxml"));
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setResizable(false);
-		stage.setTitle("Projet M4 : affichage ++");
-		stage.getIcons().add(new Image("/vue/iconeProjet.png"));
-		stage.show();
+	private void initKeyboard() {
+		canvas.setOnKeyPressed((ControllerKeyboard) controles.fabrique("clavier", this, modele));
+		canvas.getParent().getParent().setOnKeyPressed(e -> {
+			keyPressed.add(e.getCode());
+		});
+		canvas.getParent().getParent().setOnKeyReleased(e -> {
+			keyPressed.remove(e.getCode());
+		});
 	}
 
-	public void changerModele() {
-		modele = VueSimple.getModele();
-		modele.addObserver(this);
-		update(modele, modele);
-	}
 	
 	private void initMouseTracking() {
 		canvas.setOnMouseMoved(e -> {
@@ -215,4 +280,26 @@ public class VueAvancee extends Application implements Observer {
 	private void initZoomMouse() {
 		canvas.setOnScroll((ControllerZoomScroll) controles.fabrique("scroll", this, modele));
 	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		Parent root = FXMLLoader.load(this.getClass().getResource("ihmAvance.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.setTitle("Projet M4 : affichage ++");
+		stage.getIcons().add(new Image("/vue/iconeProjet.png"));
+		stage.show();
+	}
+
+	public void update(Observable arg0, Object arg1) {
+		System.out.println("update " + idxUpdate++);
+		try {
+			graphicsContext.clearRect(0, 0, 2000, 2000);
+			dessinerModele(false, false, true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
