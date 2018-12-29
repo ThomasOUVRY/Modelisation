@@ -238,6 +238,49 @@ public class VueAvancee extends Application implements Observer {
 			initKeyboard();
 			initRotaAutoCheckboxes();
 		});
+		centrerButton.setOnAction(e -> {
+			cadrage();
+		});
+	}
+
+	public void cadrage() {
+		double width = canvas.getWidth();
+		double height = canvas.getHeight();
+		double[][] matrice = modele.getMatricePoint();
+		double xMin = matrice[0][0];
+		double xMax = matrice[0][0];
+		double yMin = matrice[1][0];
+		double yMax = matrice[1][0];
+		for (int i = 1; i < matrice[0].length; i++) {
+			if (xMin > matrice[0][i])
+				xMin = matrice[0][i];
+			if (xMax < matrice[0][i])
+				xMax = matrice[0][i];
+			if (yMin > matrice[1][i])
+				yMin = matrice[1][i];
+			if (yMax < matrice[1][i])
+				yMax = matrice[1][i];
+		}
+		double ecartX = xMax - xMin;
+		double ecartY = yMax - yMin;
+		double coeff = Math.min(width / ecartX, height / ecartY);
+		modele.zoom(coeff * 0.65);
+		matrice = modele.getMatricePoint();
+		for (int i = 1; i < matrice[0].length; i++) {
+			if (xMin > matrice[0][i])
+				xMin = matrice[0][i];
+			if (xMax < matrice[0][i])
+				xMax = matrice[0][i];
+			if (yMin > matrice[1][i])
+				yMin = matrice[1][i];
+			if (yMax < matrice[1][i])
+				yMax = matrice[1][i];
+		}
+		ecartX = xMax - xMin;
+		ecartY = yMax - yMin;
+		double transX = -xMin + ((canvas.getWidth() - ecartX) / 2);
+		double transY = -yMin + ((canvas.getHeight() - ecartY) / 2);
+		modele.translation(transX, transY, 0);
 	}
 
 	private void initKeyboard() {
@@ -307,7 +350,6 @@ public class VueAvancee extends Application implements Observer {
 	}
 
 	public void update(Observable arg0, Object arg1) {
-		System.out.println("update " + idxUpdate++);
 		try {
 			graphicsContext.clearRect(0, 0, 2000, 2000);
 			dessinerModele(false, false, true);
