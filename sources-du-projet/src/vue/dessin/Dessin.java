@@ -6,7 +6,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import modele.structure.ComparatorZ;
 import modele.structure.Coordonnee;
 import modele.structure.Face;
@@ -190,6 +193,7 @@ public class Dessin {
 				graphicsContext.setFill(c);
 			} else {
 				graphicsContext.setFill(Color.RED);
+				
 			}
 			Face currentFace = listFaces.get(i);
 			int[] idxsPoints = currentFace.getTabPoint();

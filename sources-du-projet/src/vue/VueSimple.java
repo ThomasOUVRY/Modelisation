@@ -28,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
@@ -45,7 +46,7 @@ import vue.dessin.Dessin;
  */
 public final class VueSimple extends Application implements Observer {
 
-	// Le modele utlis� et � afficher sur le canvas
+	// Le modele utlisé et à afficher sur le canvas
 	private static Modele3D modele;
 
 	public static Modele3D getModele() {
@@ -148,7 +149,7 @@ public final class VueSimple extends Application implements Observer {
 
 	private ControllerFactory controles = ControllerFactory.getInstance;
 
-	// Le fichier associ� au mod�le
+	// Le fichier associé au modèle
 	private File fichier;
 	private Stage stage;
 
@@ -157,7 +158,7 @@ public final class VueSimple extends Application implements Observer {
 
 	private double posYMouse;
 
-	// Ensemble des touches pr�ss�es (r�actif) utilis� pour les raccourcis claviers
+	// Ensemble des touches préssées (réactif) utilisé pour les raccourcis claviers
 	private Set<KeyCode> keyPressed;
 
 	private final String VUE = "simple";
@@ -171,7 +172,7 @@ public final class VueSimple extends Application implements Observer {
 	}
 
 	/**
-	 * Permet de centrer et avoir un zoom correct sur l'objet lors de sa cr�ation
+	 * Permet de centrer et avoir un zoom correct sur l'objet lors de sa crï¿½ation
 	 **/
 	public void cadrage() {
 		if (fichier != null) {
@@ -391,8 +392,20 @@ public final class VueSimple extends Application implements Observer {
 
 		menuAide.setOnAction(e -> {
 			VBox root = new VBox();
-			Scene scene = new Scene(root, 300, 50);
+			Scene scene = new Scene(root, 900, 150);
 			Stage stageAide = new Stage();
+			TextArea ta = new TextArea();
+			ta.setEditable(false);
+			ta.setText("================================= Menu d'aide ===============================\n \n"
+					+ "Les boutons << + >> et << - >> vous permettent de zoomer et de dezoomer la figure  \n "
+					+ "=> ou avec la souris : Scroll) \n"
+					+ "Les boutons << ← >>, << ↑ >> , << ↓ >> et << → >> vous permettent de translater à gauche, en haut, en bas et à droite\n"
+					+ "=> ou avec la souris (maintenir clic droit + mouvement souris)"
+					+ "Les boutons << ↰  >>,  << ↱ >> vous permettent de faire des rotations autour des axes X, Y, et Z \n"
+					+ "=> ou avec la souris (maintenir clic droit + maintenir CTRL + mouvement souris)"
+					+ "Vous avez la possibilité d'activer l'affichage des points, segments et faces. Ces 3 options sont cumulables \n"
+					+ "Vous disposez d'un bouton 'mode avancée' vous offrant la possibilité de faire une rotation automatique de l'objet, de centrer l'objet et d'avoir un éclairage \n");
+			root.getChildren().add(ta);
 			stageAide.setScene(scene);
 			stageAide.setTitle("Aide");
 			stageAide.setX(500);
@@ -439,7 +452,7 @@ public final class VueSimple extends Application implements Observer {
 		canvas.setOnScroll((ControllerZoomScroll) controles.fabrique("scroll", this, modele));
 	}
 
-	/** Remet les param�tres d'affichages par d�faut (Segments et faces) **/
+	/** Remet les paramètres d'affichages par défaut (Segments et faces) **/
 	private void resetAffichage() {
 		checkboxPoints.setSelected(false);
 		affichagePoints = false;
