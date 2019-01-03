@@ -1,3 +1,4 @@
+package tests;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Test les fonctions inclus dans "Matrix"
  * 
- * @author poulyt
+ * @author poulyt, dogimonl
  *
  */
 class MatrixTest {
@@ -82,7 +83,7 @@ class MatrixTest {
 	}
 
 	/**
-	 * Test de la fonction rotation de matrice sur l'axe des Y
+	 * Test de la fonction rotation de matrice sur l'axe des Z
 	 */
 	@Test
 	public void testRotationZ() {
