@@ -33,13 +33,13 @@ public class MouvementAuto extends ControllerAvancee implements EventHandler<Act
 		this.played = false;
 		tm.setCycleCount(Integer.MAX_VALUE);
 
-		final double VITESSE_TURN = 70;
+		final double VITESSE_TURN = 500;
 
 		tm.getKeyFrames().add(new KeyFrame(Duration.millis(VITESSE_TURN), new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
-				modele.rotationCentre(0.05, vueAvancee.getCanvas().getWidth() / 2,
+				modele.rotationCentre(Math.PI/2, vueAvancee.getCanvas().getWidth() / 2,
 						vueAvancee.getCanvas().getHeight() / 2, 'y');
 			}
 		}));

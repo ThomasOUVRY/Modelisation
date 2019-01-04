@@ -29,7 +29,7 @@ Groupe M4
         * Verification extension du fichier
         * fonctions mathematiques translation, rotation et homothetie
     Incomplet :
-        * Affichage des objets contenant des faces a  plus de 3 points
+        * Affichage des objets contenant des faces aï¿½ plus de 3 points
         
 ---
 
@@ -41,7 +41,7 @@ Groupe M4
         * Une partie des tests
 
     Thomas Ouvry :
-        * Certains controllers dont rotation a  la souris
+        * Certains controllers dont rotation aï¿½ la souris
         * Lecteur de fichier PLY
         * Classe de tests unitaires associes
         * Inteface graphique par FXML
@@ -57,14 +57,14 @@ Groupe M4
     Alexis Poteau:
         * Structure du MVC
         * Javadoc
-        * Controllers associes a  la premiere interface (plus utlises actuellement)
+        * Controllers associes a la premiere interface (plus utlises actuellement)
         * Premiere version de la translation souris
         
 #LIVRABLE 2
 
 ### Description de ce qu'y a etait fait :
     Fait :
-        * Amélioration du MVC (déjà commencé au livrable 1)
+        * Amelioration du MVC (deja commence au livrable 1)
         * Utilisation de 2 patrons de conception (Factory pour les controller et Singleton pour la Factory)
         * Affichage des objets contenant des faces a plus de 3 points 
         * Affichage des faces, segments et points
@@ -85,7 +85,7 @@ Groupe M4
         * Amelioration du MVC
         * Affichage secondaire (eclairage) 
         * Objet centre des son importation
-        * Fonctionnalité d'aide
+        * Fonctionnalite d'aide
         * Video de presentation
         * Document de presentation des taches et responsabilites
         * UML
@@ -94,16 +94,16 @@ Groupe M4
         ** Plusieurs tentatives pour le lissage ... en vain .. 
 
     Thomas Ouvry :
-        * 2 patrons de conception (Factory & Singleton)
-        * Affichage secondaire dans une deuxième fenêtre
-        * Controleur horloge
-        * Amélioration MVC
+        * Affichage secondaire dans une deuxieme fenetre
+        * Amelioration MVC
         * Objet centre des son importation
         * Possibilite de centrer les objets via l'aide d'un bouton
         * Affichage des faces, segments et points
+        * Mise en place d'un git temporaire suite a la panne du git de l'IUT (https://github.com/ThomasOUVRY/Modelisation)
+        * Mise en place d'un trello (https://trello.com/b/MVYVsGmW/rendu-2)
 
-    Thomas Pouly:
-        * 
+    Thomas Pouly:    
+        * Controleur horloge
 
     Alexis Poteau:
-        * 
+        * 2 patrons de conception (Factory & Singleton)
